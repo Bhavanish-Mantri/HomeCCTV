@@ -4,8 +4,8 @@ import requests, datetime, os, threading, time
 app = Flask(__name__)
 
 # === CONFIGURATION ===
-BOT_TOKEN = '7208069689:AAHVdxh9AUu9QJnfJkXI-wo_fP5iPUrovuo'
-CHAT_ID = '931091155'
+BOT_TOKEN = 'TELEGRAM BOT TOKEN HERE '
+CHAT_ID = 'TELEGRAM CHAT ID HERE'
 PHOTO_PATH = 'static/captured.jpg'
 IP_WEBCAM_URL = 'http://192.168.1.11:5000/shot.jpg'  
 
@@ -22,7 +22,7 @@ def capture_photo():
             with open(PHOTO_PATH, 'wb') as f:
                 f.write(r.content)
         else:
-            print("[❌] Failed to fetch image from IP cam.")
+            print("Failed to fetch image from IP cam.")
     except Exception as e:
         print("[ERROR] Capture failed:", e)
 
@@ -59,12 +59,12 @@ def background_capture():
             last_ip = ip
             last_location = location
 
-            msg = f"🔐 Auto-Capture Alert\n📅 {now}\n🌍 Location: {location}\n💻 IP: {ip}"
+            msg = f" Auto-Capture Alert\n {now}\n Location: {location}\n IP: {ip}"
             send_to_telegram(PHOTO_PATH, msg)
 
-            print(f"[✅] Captured & sent at {now}")
+            print(f" Captured & sent at {now}")
         except Exception as e:
-            print("[⚠️] Error in background capture:", e)
+            print(" Error in background capture:", e)
 
         time.sleep(5) 
 
@@ -72,9 +72,9 @@ def background_capture():
 def home():
     return render_template('index.html', date=last_time, ip=last_ip, location=last_location)
 
-# === Start Everything ===
+
 if __name__ == '__main__':
-    # Start capture thread
+    
     threading.Thread(target=background_capture, daemon=True).start()
     
     # Run web server
