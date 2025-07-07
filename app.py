@@ -7,7 +7,7 @@ app = Flask(__name__)
 BOT_TOKEN = '7208069689:AAHVdxh9AUu9QJnfJkXI-wo_fP5iPUrovuo'
 CHAT_ID = '931091155'
 PHOTO_PATH = 'static/captured.jpg'
-IP_WEBCAM_URL = 'http://192.168.29.24:5000/shot.jpg'  # ← Replace with your phone's IP webcam feed
+IP_WEBCAM_URL = 'http://192.168.1.11:5000/shot.jpg'  
 
 # === Globals to show on dashboard ===
 last_time = "N/A"
@@ -46,7 +46,7 @@ def send_to_telegram(photo_path, message):
     except Exception as e:
         print("[ERROR] Telegram send failed:", e)
 
-# === Background Task: Capture Every 5 Seconds ===
+#Background Task: Capture Every 5 Seconds
 def background_capture():
     global last_time, last_ip, last_location
     while True:
@@ -66,9 +66,8 @@ def background_capture():
         except Exception as e:
             print("[⚠️] Error in background capture:", e)
 
-        time.sleep(5)  # Capture interval
+        time.sleep(5) 
 
-# === Flask Web Page ===
 @app.route('/')
 def home():
     return render_template('index.html', date=last_time, ip=last_ip, location=last_location)
