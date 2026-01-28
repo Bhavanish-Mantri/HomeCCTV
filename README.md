@@ -1,7 +1,10 @@
-# HomeCCTV — Intrusion Detection System
+## HomeCCTV — Intrusion Detection System
 
-**HomeCCTV** is a Python-based Intrusion Detection System that uses computer vision to monitor video feeds, detect motion, capture evidence, and alert you via Telegram. Built using OpenCV, Flask, and Telegram Bot API, it’s ideal for learning real-time video processing, web integration, and alert automation.
+**HomeCCTV** is a Python-based intrusion detection system that leverages computer vision to monitor video feeds, detect motion, capture evidence, and send real-time alerts via Telegram.  
+Built using **OpenCV**, **Flask**, and the **Telegram Bot API**, it is ideal for learning real-time video processing, web integration, and alert automation.
+
 ---
+
 
 ## 🚀 Features
 
